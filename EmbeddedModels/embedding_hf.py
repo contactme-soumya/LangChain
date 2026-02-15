@@ -6,6 +6,8 @@ import numpy as np
 
 load_dotenv(override=True)
 os.environ["HUGGINGFACEHUB_API_TOKEN"] = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+os.environ['HF_HOME']='D:/HF_AI_Models'
+os.environ['SENTENCE_TRANSFORMERS_HOME'] = 'D:/HF_AI_Models'
 
 # The model name must be a valid sentence-transformers model
 # Common options:
@@ -27,7 +29,8 @@ documents = ["Cristiano Ronaldo is widely considered one of the greatest footbal
 
 document_embeddings = embedding.embed_documents(documents)
 
-query_embedding = embedding.embed_query("who is the legendary cricket player?")
+query = "who is the legendary cricket player?"
+query_embedding = embedding.embed_query(query)
 
 #print(f"Embedding dimension: {len(result)}")
 
@@ -44,3 +47,8 @@ print("Raw (index, score) pairs:", indexed_scores)
 # Sort by score (second element) in descending order
 sorted_scores = sorted(indexed_scores, key=lambda x: x[1], reverse=True)
 print("Sorted (index, score) pairs:", sorted_scores)
+
+index,score = sorted(indexed_scores, key=lambda x: x[1])[-1]
+
+print('query: ',query)
+print(documents[index],' with similarity score: ',score)

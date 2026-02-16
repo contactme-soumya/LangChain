@@ -1,7 +1,11 @@
+import os
+# Set environment variables FIRST, before any HuggingFace imports
+os.environ["HF_HUB_CACHE"] = 'D:/HF_AI_Models'
+os.environ["TRANSFORMERS_CACHE"] = 'D:/HF_AI_Models'
+os.environ["HF_HOME"] = 'D:/HF_AI_Models'
+
 from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline
 from dotenv import load_dotenv
-import os
-os.environ["HF_HOME"] = 'D:/HF_AI_Models'
 
 load_dotenv(override=True)
 

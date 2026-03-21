@@ -14,13 +14,15 @@ os.environ["HUGGINGFACEHUB_API_TOKEN"] = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 try:
     llm = HuggingFaceEndpoint(
         repo_id="TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        task="text-generation",
         max_new_tokens=512,
         temperature=0.5
     )
     
     model = ChatHuggingFace(llm=llm, temperature=0.5)
     
-    result = model.invoke("What is the capital of India?")
+    #result = model.invoke("What is the capital of India?")
+    result = model.invoke("What is the population of capital of France?")
     print(result.content)
 except Exception as e:
     print(f"Error: {e}")
@@ -33,7 +35,8 @@ except Exception as e:
             temperature=0.5
         )
         model = ChatHuggingFace(llm=llm, temperature=0.5)
-        result = model.invoke("What is the capital of India?")
+        #result = model.invoke("What is the capital of India?")
+        result = model.invoke("What is the population of capital of France?")
         print(result.content)
     except Exception as e2:
         print(f"Alternative also failed: {e2}")

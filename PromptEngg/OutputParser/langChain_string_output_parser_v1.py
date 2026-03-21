@@ -10,8 +10,7 @@ os.environ["HUGGINGFACEHUB_API_TOKEN"] = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 try: 
     llm = HuggingFaceEndpoint(
-        repo_id="mistralai/Mistral-7B-Instruct-v0.2",
-        temperature=0.5
+        repo_id="mistralai/Mistral-7B-Instruct-v0.2"
     )
     model = ChatHuggingFace(llm=llm, temperature=0.5)
 except Exception as e:
@@ -24,7 +23,7 @@ template1 = PromptTemplate(
 )
 
 template2 = PromptTemplate(
-    template='Write a five line summary on following text /n {text}',
+    template='Write a 5 line summary on following text /n {text}',
     input_variables = ['text']
 )
 
